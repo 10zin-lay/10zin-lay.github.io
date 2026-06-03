@@ -66,7 +66,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 200;
-    padding: 18px 64px;
+    padding: 18px 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -95,9 +95,9 @@
   section {
     position: relative;
     z-index: 10;
-    max-width: 920px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 48px;
+    padding: 100px 80px;
   }
   section + section { border-top: 1px solid var(--line); }
   .section-ref {
@@ -159,11 +159,10 @@
   .hero-roles span { color: var(--hi); }
   .hero-stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(120px, 180px));
     gap: 1px;
     background: var(--line2);
     border: 1px solid var(--line2);
-    max-width: 560px;
   }
   .hero-stat {
     background: var(--bg2);
@@ -202,7 +201,7 @@
   @keyframes sline { 0%,100%{opacity:.3} 50%{opacity:1} }
 
   /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; }
+  .about-grid { display: grid; grid-template-columns: 1fr 320px; gap: 80px; align-items: start; }
   .about-text p { color: var(--muted); margin-bottom: 16px; }
   .about-text p:first-child { color: var(--text); font-size: 16px; line-height: 1.8; }
   .about-facts { border: 1px solid var(--line2); }
@@ -213,7 +212,7 @@
 
   /* EXPERIENCE */
   .exp-list { display: flex; flex-direction: column; gap: 0; }
-  .exp-item { padding: 32px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 180px 1fr; gap: 32px; }
+  .exp-item { padding: 32px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
   .exp-item:last-child { border-bottom: none; }
   .exp-meta { display: flex; flex-direction: column; gap: 6px; padding-top: 3px; }
   .exp-period { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.06em; }
@@ -270,10 +269,10 @@
     border-top: 1px solid var(--line);
   }
   .project-drawer-inner {
-    padding: 28px 32px 32px 100px;
+    padding: 32px 40px 36px 116px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 40px;
   }
   .stl-viewer-wrap {
     grid-column: 1 / -1;
@@ -378,7 +377,7 @@
 
   /* EDUCATION */
   .edu-list { display: flex; flex-direction: column; }
-  .edu-item { padding: 28px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: start; }
+  .edu-item { padding: 28px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: start; }
   .edu-item:last-child { border-bottom: none; }
   .edu-year { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
   .edu-body h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
