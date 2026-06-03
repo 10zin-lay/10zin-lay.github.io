@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tenzin Thinlay — Mechatronics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0b;
+    --bg2: #111110;
+    --bg3: #161614;
+    --line: rgba(255,255,255,0.07);
+    --line2: rgba(255,255,255,0.13);
+    --text: #dedad2;
+    --muted: #6b6960;
+    --accent: #7fa896;
+    --accent2: #8faa9e;
+    --hi: #b5c9bf;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before { display: none; }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg stroke='rgba(127,168,150,0.045)' stroke-width='1' fill='none'%3E%3Cpath d='M40 0 L40 80 L120 80'/%3E%3Ccircle cx='120' cy='80' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M120 80 L120 160 L200 160'/%3E%3Ccircle cx='200' cy='160' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M200 160 L280 160 L280 240'/%3E%3Ccircle cx='280' cy='240' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M0 200 L80 200 L80 280 L160 280'/%3E%3Ccircle cx='80' cy='200' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M160 280 L160 360 L240 360'/%3E%3Ccircle cx='160' cy='280' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M320 0 L320 40 L240 40 L240 120'/%3E%3Ccircle cx='240' cy='120' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M240 120 L160 120 L160 40 L80 40'/%3E%3Ccircle cx='160' cy='120' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M400 100 L360 100 L360 180 L280 180'/%3E%3Ccircle cx='360' cy='100' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M0 320 L40 320 L40 360 L120 360'/%3E%3Ccircle cx='40' cy='320' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3Cpath d='M400 300 L360 300 L360 360 L300 360'/%3E%3Ccircle cx='360' cy='360' r='3' stroke='rgba(127,168,150,0.08)'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 400px 400px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .coord {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    opacity: 0.4;
+    position: fixed;
+    z-index: 100;
+    pointer-events: none;
+  }
+  .coord-tl { top: 12px; left: 16px; }
+  .coord-tr { top: 12px; right: 16px; }
+  .coord-bl { bottom: 40px; left: 16px; }
+  .coord-br { bottom: 40px; right: 16px; }
+  .frame-border { position: fixed; background: var(--line2); z-index: 90; pointer-events: none; }
+  .frame-border.top    { top: 32px; left: 32px; right: 32px; height: 1px; }
+  .frame-border.bottom { bottom: 32px; left: 32px; right: 32px; height: 1px; }
+  .frame-border.left   { left: 32px; top: 32px; bottom: 32px; width: 1px; }
+  .frame-border.right  { right: 32px; top: 32px; bottom: 32px; width: 1px; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    padding: 18px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(var(--bg), transparent);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 10;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 120px 48px;
+  }
+  section + section { border-top: 1px solid var(--line); }
+  .section-ref {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-ref::after { content: ''; flex: 1; height: 1px; background: var(--line2); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.7;
+  }
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  h1 em { font-style: normal; color: var(--hi); }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 36px;
+    max-width: 540px;
+    line-height: 1.7;
+  }
+  .hero-roles {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 56px;
+  }
+  .hero-roles span { color: var(--hi); }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line2);
+    border: 1px solid var(--line2);
+    max-width: 560px;
+  }
+  .hero-stat {
+    background: var(--bg2);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hero-stat-num {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .hero-stat-label { font-size: 11px; color: var(--muted); line-height: 1.3; }
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .scroll-hint::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--muted);
+    animation: sline 2s ease-in-out infinite;
+  }
+  @keyframes sline { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; }
+  .about-text p { color: var(--muted); margin-bottom: 16px; }
+  .about-text p:first-child { color: var(--text); font-size: 16px; line-height: 1.8; }
+  .about-facts { border: 1px solid var(--line2); }
+  .about-fact { padding: 14px 20px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 3px; }
+  .about-fact:last-child { border-bottom: none; }
+  .about-fact-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .about-fact-val { font-size: 13px; color: var(--text); }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item { padding: 32px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 180px 1fr; gap: 32px; }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta { display: flex; flex-direction: column; gap: 6px; padding-top: 3px; }
+  .exp-period { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.06em; }
+  .exp-co { font-family: var(--mono); font-size: 11px; color: var(--accent); }
+  .exp-loc { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .exp-body h3 { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 12px; }
+  .exp-body ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-body ul li { font-size: 13px; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.6; }
+  .exp-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--line2); }
+
+  /* PROJECTS */
+  .project-list { display: flex; flex-direction: column; gap: 2px; }
+  .project-item {
+    border: 1px solid var(--line);
+    background: var(--bg2);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .project-item:hover { border-color: var(--line2); }
+  .project-header {
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 20px;
+    align-items: start;
+    cursor: pointer;
+    user-select: none;
+  }
+  .project-num { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .project-title-wrap {}
+  .project-title-wrap h3 { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .project-meta { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 10px; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; padding: 3px 9px; border: 1px solid var(--line2); color: var(--muted); }
+  .project-toggle {
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--muted);
+    margin-top: 2px;
+    transition: transform 0.25s, color 0.2s;
+    line-height: 1;
+  }
+  .project-item.open .project-toggle { transform: rotate(45deg); color: var(--accent); }
+
+  /* PROJECT DRAWER */
+  .project-drawer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    border-top: 0px solid var(--line);
+  }
+  .project-item.open .project-drawer {
+    max-height: 1100px;
+    border-top: 1px solid var(--line);
+  }
+  .project-drawer-inner {
+    padding: 28px 32px 32px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .stl-viewer-wrap {
+    grid-column: 1 / -1;
+    border: 1px solid var(--line2);
+    background: var(--bg3);
+    overflow: hidden;
+    position: relative;
+  }
+  .stl-viewer-wrap model-viewer {
+    width: 100%;
+    height: 340px;
+    background: transparent;
+    --poster-color: transparent;
+  }
+  .stl-viewer-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .stl-viewer-label span { color: var(--accent); }
+  .stl-placeholder {
+    width: 100%;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--muted);
+  }
+  .stl-placeholder p { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; }
+  .stl-placeholder .stl-icon-big { font-size: 48px; opacity: 0.12; }
+  .stl-axes-row { display: flex; gap: 8px; margin-top: 4px; }
+  .stl-ax { font-family: var(--mono); font-size: 9px; padding: 2px 7px; border: 1px solid; }
+  .stl-ax.x { border-color: #c87a7a; color: #c87a7a; }
+  .stl-ax.y { border-color: var(--accent); color: var(--accent); }
+  .stl-ax.z { border-color: #7a9ec8; color: #7a9ec8; }
+  .drawer-section h4 {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .drawer-section p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .drawer-section ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .drawer-section ul li { font-size: 13px; color: var(--muted); padding-left: 14px; position: relative; }
+  .drawer-section ul li::before { content: '·'; position: absolute; left: 0; color: var(--accent); }
+  .drawer-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+  .drawer-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 8px 16px;
+    border: 1px solid var(--line2);
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .drawer-link:hover { border-color: var(--accent); color: var(--accent); }
+  .drawer-link.primary { border-color: var(--accent); color: var(--accent); }
+
+  /* CATEGORY FILTER */
+  .cat-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: 1px solid var(--line2);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .cat-btn:hover { color: var(--text); border-color: var(--line2); }
+  .cat-btn.active { color: var(--accent); border-color: var(--accent); background: rgba(127,168,150,0.06); }
+  .project-item.hidden { display: none; }
+  .paper-table { width: 100%; border-collapse: collapse; }
+  .paper-table th { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; text-align: left; padding: 0 16px 16px; border-bottom: 1px solid var(--line2); }
+  .paper-table th:first-child { padding-left: 0; }
+  .paper-table td { padding: 18px 16px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 13px; color: var(--muted); }
+  .paper-table td:first-child { padding-left: 0; font-family: var(--mono); color: var(--muted); }
+  .paper-table td a { color: var(--text); text-decoration: none; line-height: 1.5; }
+  .paper-table td a:hover { color: var(--accent); }
+  .paper-badge { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; padding: 3px 8px; border: 1px solid var(--accent); color: var(--accent); white-space: nowrap; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .skill-group { background: var(--bg2); border: 1px solid var(--line); padding: 24px 26px; }
+  .skill-group h4 { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+  .skill-items { display: flex; flex-direction: column; gap: 6px; }
+  .skill-item { font-size: 12px; color: var(--muted); }
+
+  /* EDUCATION */
+  .edu-list { display: flex; flex-direction: column; }
+  .edu-item { padding: 28px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: start; }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-year { font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 3px; }
+  .edu-body h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .edu-body .edu-school { font-size: 12px; color: var(--accent); font-family: var(--mono); margin-bottom: 8px; }
+  .edu-body p { font-size: 13px; color: var(--muted); }
+
+  /* CONTACT */
+  #contact { padding-bottom: 160px; }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-text h2 { font-size: 26px; font-weight: 300; color: var(--text); letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.35; }
+  .contact-text p { color: var(--muted); font-size: 14px; }
+  .contact-links { display: flex; flex-direction: column; gap: 0; margin-top: 0; }
+  .contact-link { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--text); font-size: 14px; transition: color 0.2s; }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link span { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .contact-link:hover span { color: var(--accent); }
+
+  /* TITLE BLOCK */
+  .title-block {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    height: 32px;
+    background: var(--bg2);
+    border-top: 1px solid var(--line2);
+    display: flex;
+    align-items: center;
+  }
+  .tb-cell {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding: 0 16px;
+    border-right: 1px solid var(--line2);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  .tb-cell .hi { color: var(--hi); margin-left: 6px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    section { padding: 80px 24px; }
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .frame-border { display: none; }
+    .project-header { grid-template-columns: 36px 1fr auto; }
+    .project-drawer-inner { padding: 20px 24px; grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .edu-item { grid-template-columns: 1fr; gap: 8px; }
+    .title-block { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame-border top"></div>
+<div class="frame-border bottom"></div>
+<div class="frame-border left"></div>
+<div class="frame-border right"></div>
+<div class="coord coord-tl">A1</div>
+<div class="coord coord-tr">A4</div>
+<div class="coord coord-bl">D1</div>
+<div class="coord coord-br">D4</div>
+
+<nav>
+  <a class="nav-logo" href="#">TT · MECH</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#papers">Publications</a></li>
+    <li><a href="#patent">Patent</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">Mechatronics Engineer · Portfolio Rev 01</div>
+  <h1>Tenzin Thinlay<br><em>Mechanisms, robots,<br>and parts that work.</em></h1>
+  <p class="hero-sub">End-to-end mechanical and mechatronic design — from linkage synthesis and FEA to fabrication-ready drawings and production prototypes.</p>
+  <div class="hero-roles">
+    <span>R&D Mechanical Engineer</span> · Silent Sensors Ltd &nbsp;·&nbsp; MSc Robotics, <span>University of Bristol</span>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">5+</span>
+      <span class="hero-stat-label">Design Projects</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">2</span>
+      <span class="hero-stat-label">Publications</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">1</span>
+      <span class="hero-stat-label">Patent Pending</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">2</span>
+      <span class="hero-stat-label">Industry Roles</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-ref">REF-A &nbsp; About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a mechatronics engineer with experience across the full product development cycle — from concept and CAD modelling through tolerance analysis, FEA validation, and production-ready documentation.</p>
+      <p>My background spans robotic mechanisms, servo actuation, linkage design, and electro-mechanical integration. I care about designs that are not just analytically sound but actually manufacturable and buildable by real people.</p>
+      <p>Currently working at Silent Sensors Ltd in Bristol on battery-free tyre monitoring systems, alongside an MSc in Robotics at the University of Bristol.</p>
+    </div>
+    <div class="about-facts">
+      <div class="about-fact">
+        <span class="about-fact-label">Location</span>
+        <span class="about-fact-val">Bristol, United Kingdom</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">Current Role</span>
+        <span class="about-fact-val">R&D Mechanical Engineer · Silent Sensors</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">Degree</span>
+        <span class="about-fact-val">MSc Robotics · University of Bristol</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">CAD</span>
+        <span class="about-fact-val">Fusion 360 · SolidWorks · Creo</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">Simulation</span>
+        <span class="about-fact-val">ANSYS · SolidWorks FEA · MATLAB</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">Fabrication</span>
+        <span class="about-fact-val">FDM · SLS · Markforged · Laser · CNC</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">Languages</span>
+        <span class="about-fact-val">English (Professional) · German (A1)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-ref">REF-B &nbsp; Experience</div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Aug 2025 — Present</span>
+        <span class="exp-co">Silent Sensors Ltd</span>
+        <span class="exp-loc">Bristol, UK</span>
+      </div>
+      <div class="exp-body">
+        <h3>R&D Mechanical Engineer</h3>
+        <ul>
+          <li>Led end-to-end mechanical design of TPMS from concept to prototype; rapidly iterated on CAD models in Fusion 360, experimenting with materials and manufacturing methods including Markforged Onyx and carbon-fibre reinforcement.</li>
+          <li>Designed and built custom test fixtures for prototype stress testing; conducted vibration and jig-based durability testing with oscilloscope-based signal validation.</li>
+          <li>Collaborated across electronics and firmware teams on electro-mechanical integration; maintained BOM and documentation through full development cycle to first production batch.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <span class="exp-period">Oct 2022 — May 2023</span>
+        <span class="exp-co">Planys Technologies</span>
+        <span class="exp-loc">Chennai, India</span>
+      </div>
+      <div class="exp-body">
+        <h3>Mechanical Engineering Intern</h3>
+        <ul>
+          <li>Led PDIC redesign projects for underwater robotic systems; iterated on mechanical assemblies in Fusion 360 and SolidWorks, delivering fabrication-ready GD&T drawings and DFM documentation with 30% weight reduction achieved.</li>
+          <li>Designed sheet metal enclosures and laser-cut sensor mounts for ROV/AUV platforms in harsh underwater environments; validated designs through IP rating tests, FEA, and physical prototype testing.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-ref">REF-C &nbsp; Projects</div>
+
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:12px;">
+    <div style="display:flex; gap:2px;">
+      <button class="cat-btn active" onclick="filterProjects('all')">All</button>
+      <button class="cat-btn" onclick="filterProjects('design')">Mechanical Design</button>
+      <button class="cat-btn" onclick="filterProjects('embedded')">Embedded Systems</button>
+      <button class="cat-btn" onclick="filterProjects('robotics')">Robotics &amp; Programming</button>
+    </div>
+    <a href="https://github.com/tenzinthinlay" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;border:1px solid var(--line2);padding:8px 14px;letter-spacing:0.06em;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line2)'">github.com/tenzinthinlay ↗</a>
+  </div>
+
+    <!-- Project 1 -->
+    <div class="project-item" id="proj-1" data-category="robotics">
+      <div class="project-header" onclick="toggleProject('proj-1')">
+        <div class="project-num">01</div>
+        <div class="project-title-wrap">
+          <div class="project-meta">Ongoing · Robotics</div>
+          <h3>3D Printed Quadruped Robot</h3>
+          <div class="tag-list">
+            <span class="tag">Linkage Design</span>
+            <span class="tag">Fusion 360</span>
+            <span class="tag">FDM / Laser</span>
+            <span class="tag">DFM</span>
+          </div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="stl-viewer-wrap">
+            <div class="stl-viewer-label">3D Model — Quadruped Leg Linkage <span>orbit · zoom · pan</span></div>
+            <!-- Replace YOUR_STL_URL with a hosted .glb or .stl link e.g. from Google Drive or GitHub -->
+            <div class="stl-placeholder" id="viewer-1-placeholder">
+              <div class="stl-icon-big">⬡</div>
+              <p>Upload your STL to see it here</p>
+              <p style="font-size:10px;opacity:0.5;">Replace YOUR_STL_URL_1 with a hosted .glb file link</p>
+              <div class="stl-axes-row">
+                <span class="stl-ax x">X</span>
+                <span class="stl-ax y">Y</span>
+                <span class="stl-ax z">Z</span>
+              </div>
+            </div>
+            <model-viewer id="mv-1" src="YOUR_STL_URL_1" alt="Quadruped leg linkage 3D model"
+              camera-controls auto-rotate shadow-intensity="0"
+              style="display:none; width:100%; height:340px; background:transparent; --poster-color:transparent;">
+            </model-viewer>
+          </div>
+          <div class="drawer-section">
+            <h4>Overview</h4>
+            <p>Designed a Watt six-bar linkage mechanism per leg to achieve efficient walking gaits with minimal actuation complexity. Rapidly iterated through multiple 3D-printed PLA prototypes. Currently redesigning for laser cutting with a metal/plastic hybrid construction to improve strength-to-weight ratio and assembly modularity.</p>
+          </div>
+          <div class="drawer-section">
+            <h4>Key outcomes</h4>
+            <ul>
+              <li>Watt six-bar linkage synthesised per leg for smooth foot trajectory</li>
+              <li>Multiple PLA prototypes iterated in Fusion 360</li>
+              <li>Redesigned for laser cut metal/plastic hybrid construction</li>
+              <li>DFM principles applied throughout for modularity and ease of assembly</li>
+            </ul>
+            <div class="drawer-links">
+              <a href="YOUR_STL_URL_1" class="drawer-link primary" download>↓ Download STL</a>
+              <a href="#" class="drawer-link">View STL ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-item" id="proj-2" data-category="robotics embedded">
+      <div class="project-header" onclick="toggleProject('proj-2')">
+        <div class="project-num">02</div>
+        <div class="project-title-wrap">
+          <div class="project-meta">University Project · Robotics</div>
+          <h3>Servo-Actuated Robotic Gripper</h3>
+          <div class="tag-list">
+            <span class="tag">Slider-Crank</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">Mechanism Design</span>
+          </div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="stl-viewer-wrap">
+            <div class="stl-viewer-label">3D Model — Robotic Gripper <span>orbit · zoom · pan</span></div>
+            <div class="stl-placeholder" id="viewer-2-placeholder">
+              <div class="stl-icon-big">◈</div>
+              <p>Upload your STL to see it here</p>
+              <p style="font-size:10px;opacity:0.5;">Replace YOUR_STL_URL_2 with a hosted .glb file link</p>
+              <div class="stl-axes-row">
+                <span class="stl-ax x">X</span><span class="stl-ax y">Y</span><span class="stl-ax z">Z</span>
+              </div>
+            </div>
+            <model-viewer id="mv-2" src="YOUR_STL_URL_2" alt="Robotic gripper 3D model"
+              camera-controls auto-rotate shadow-intensity="0"
+              style="display:none; width:100%; height:340px; background:transparent; --poster-color:transparent;">
+            </model-viewer>
+          </div>
+          <div class="drawer-section">
+            <h4>Overview</h4>
+            <p>Designed and developed a servo-actuated gripper using a slider-crank mechanism. Rapidly iterated on CAD model and 3D-printed prototypes, experimenting with mechanism geometry to achieve an optimised actuation range of 1–10 cm. Arduino-based control circuit implemented for dynamic grip force and speed adjustment.</p>
+          </div>
+          <div class="drawer-section">
+            <h4>Key outcomes</h4>
+            <ul>
+              <li>Slider-crank optimised for 1–10 cm actuation range</li>
+              <li>Arduino PID control for dynamic grip force</li>
+              <li>Cycle-tested mechanism under repeated actuation for durability validation</li>
+              <li>Multiple printed prototypes with geometry iteration</li>
+            </ul>
+            <div class="drawer-links">
+              <a href="YOUR_STL_URL_2" class="drawer-link primary" download>↓ Download STL</a>
+              <a href="#" class="drawer-link">Watch Demo ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-item" id="proj-3" data-category="design">
+      <div class="project-header" onclick="toggleProject('proj-3')">
+        <div class="project-num">03</div>
+        <div class="project-title-wrap">
+          <div class="project-meta">Research Project · 2022 · Published</div>
+          <h3>Passive Ankle-Foot Prosthesis with Adjustable Stiffness</h3>
+          <div class="tag-list">
+            <span class="tag">FEA · ANSYS</span>
+            <span class="tag">Topology Optimisation</span>
+            <span class="tag">Fusion 360</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Leafspring</span>
+          </div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="stl-viewer-wrap">
+            <div class="stl-viewer-label">3D Model — Ankle-Foot Prosthesis <span>orbit · zoom · pan</span></div>
+            <div class="stl-placeholder" id="viewer-3-placeholder">
+              <div class="stl-icon-big">⬢</div>
+              <p>Upload your STL to see it here</p>
+              <p style="font-size:10px;opacity:0.5;">Replace YOUR_STL_URL_3 with a hosted .glb file link</p>
+              <div class="stl-axes-row">
+                <span class="stl-ax x">X</span><span class="stl-ax y">Y</span><span class="stl-ax z">Z</span>
+              </div>
+            </div>
+            <model-viewer id="mv-3" src="YOUR_STL_URL_3" alt="Ankle-foot prosthesis 3D model"
+              camera-controls auto-rotate shadow-intensity="0"
+              style="display:none; width:100%; height:340px; background:transparent; --poster-color:transparent;">
+            </model-viewer>
+          </div>
+          <div class="drawer-section">
+            <h4>Overview</h4>
+            <p>Designed a full prosthesis assembly in Fusion 360 incorporating a leadscrew and leaf spring mechanism for variable stiffness. Conducted FEA in ANSYS to validate structural integrity under 800 N load, achieving 35% weight reduction through topology optimisation while maintaining FOS = 1.35. Published in Materials Today Proceedings, 2022.</p>
+          </div>
+          <div class="drawer-section">
+            <h4>Key outcomes</h4>
+            <ul>
+              <li>800 N load validated with FOS = 1.35 in ANSYS</li>
+              <li>35% weight reduction via topology optimisation</li>
+              <li>MATLAB analysis confirmed linear stiffness change up to 70% spring length</li>
+              <li>Leadscrew + leaf spring mechanism for adjustable stiffness</li>
+              <li>Published — Mater. Today Proc. 2022</li>
+            </ul>
+            <div class="drawer-links">
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S2214785322040226" target="_blank" class="drawer-link primary">View Publication ↗</a>
+              <a href="YOUR_STL_URL_3" class="drawer-link" download>↓ Download STL</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-item" id="proj-4" data-category="design embedded">
+      <div class="project-header" onclick="toggleProject('proj-4')">
+        <div class="project-num">04</div>
+        <div class="project-title-wrap">
+          <div class="project-meta">Industry · Silent Sensors Ltd · 2025</div>
+          <h3>TPMS — Battery-Free Tyre Monitoring System</h3>
+          <div class="tag-list">
+            <span class="tag">Markforged / Onyx</span>
+            <span class="tag">Carbon Fibre</span>
+            <span class="tag">Electro-Mechanical</span>
+            <span class="tag">Test Fixtures</span>
+          </div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="drawer-section">
+            <h4>Overview</h4>
+            <p>Led end-to-end mechanical design of a battery-free tyre pressure monitoring system from concept to prototype at Silent Sensors Ltd. Explored Markforged Onyx and carbon-fibre reinforced materials. Designed custom vibration and stress test fixtures, with oscilloscope-based signal validation. Maintained full BOM and documentation through to first production batch.</p>
+          </div>
+          <div class="drawer-section">
+            <h4>Key outcomes</h4>
+            <ul>
+              <li>Full concept-to-prototype pipeline delivered</li>
+              <li>Markforged Onyx and carbon-fibre materials evaluated</li>
+              <li>Custom jig-based vibration and durability test fixtures</li>
+              <li>Cross-functional collaboration with electronics and firmware teams</li>
+              <li>BOM and documentation maintained through to production batch</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="project-item" id="proj-5" data-category="design">
+      <div class="project-header" onclick="toggleProject('proj-5')">
+        <div class="project-num">05</div>
+        <div class="project-title-wrap">
+          <div class="project-meta">Industry · Planys Technologies · 2022–2023</div>
+          <h3>ROV/AUV Mechanical Redesign</h3>
+          <div class="tag-list">
+            <span class="tag">GD&T</span>
+            <span class="tag">Sheet Metal</span>
+            <span class="tag">IP Rating</span>
+            <span class="tag">DFM</span>
+            <span class="tag">SolidWorks</span>
+          </div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="drawer-section">
+            <h4>Overview</h4>
+            <p>Led PDIC redesign for underwater robotic systems (ROV/AUV platforms) operating in harsh subsea environments. Designed sheet metal enclosures and laser-cut sensor mounts. All designs validated through IP rating tests, FEA, and physical prototype testing. Delivered fabrication-ready GD&T drawings with DFM documentation.</p>
+          </div>
+          <div class="drawer-section">
+            <h4>Key outcomes</h4>
+            <ul>
+              <li>30% weight reduction achieved on redesigned assemblies</li>
+              <li>IP rating validation through physical testing</li>
+              <li>Fabrication-ready GD&T drawings and DFM documentation</li>
+              <li>Sheet metal enclosures and laser-cut mounts for ROV/AUV platforms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 6 - GitHub -->
+    <div class="project-item" id="proj-6" data-category="robotics">
+      <div class="project-header" onclick="toggleProject('proj-6')">
+        <div class="project-num">06</div>
+        <div class="project-title-wrap">
+          <div class="project-meta">Personal · Robotics · GitHub</div>
+          <h3>ROS 2 Quadruped Motion Controller</h3>
+          <div class="tag-list">
+            <span class="tag">ROS 2</span>
+            <span class="tag">Python</span>
+            <span class="tag">PID Control</span>
+            <span class="tag">Gait Planning</span>
+          </div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="drawer-section">
+            <h4>Overview</h4>
+            <p>ROS 2 software stack for controlling the 3D printed quadruped. Implements gait planning, inverse kinematics per leg, and PID-based joint control. Written in Python with a modular node architecture for easy hardware swapping.</p>
+          </div>
+          <div class="drawer-section">
+            <h4>Key outcomes</h4>
+            <ul>
+              <li>Inverse kinematics solver for Watt six-bar legs</li>
+              <li>Trot and crawl gait implemented</li>
+              <li>ROS 2 node graph with teleop and autonomy modes</li>
+              <li>Tested on Raspberry Pi 4 with servo HAT</li>
+            </ul>
+            <div class="drawer-links">
+              <a href="https://github.com/tenzinthinlay/quadruped-ros2" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 7 - GitHub -->
+    <div class="project-item" id="proj-7" data-category="embedded robotics">
+      <div class="project-header" onclick="toggleProject('proj-7')">
+        <div class="project-num">07</div>
+        <div class="project-title-wrap">
+          <div class="project-meta">Personal · Embedded Systems · GitHub</div>
+          <h3>Arduino Gripper Force Controller</h3>
+          <div class="tag-list">
+            <span class="tag">Arduino</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">Servo Control</span>
+            <span class="tag">Force Sensing</span>
+          </div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="drawer-section">
+            <h4>Overview</h4>
+            <p>Embedded firmware for the servo-actuated gripper. Reads a force-sensitive resistor and closes a PID loop to maintain target grip force. Serial interface for tuning gains and logging data in real time. Fully open-source on GitHub.</p>
+          </div>
+          <div class="drawer-section">
+            <h4>Key outcomes</h4>
+            <ul>
+              <li>FSR-based closed-loop grip force control</li>
+              <li>PID tuning via serial terminal</li>
+              <li>Real-time data logging at 100 Hz</li>
+              <li>Under 4 KB flash footprint on Arduino Nano</li>
+            </ul>
+            <div class="drawer-links">
+              <a href="https://github.com/tenzinthinlay/gripper-controller" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</section>
+<section id="papers">
+  <div class="section-ref">REF-D &nbsp; Publications</div>
+  <table class="paper-table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Title &amp; Journal</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01</td>
+        <td>
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S2214785322040226" target="_blank">Design and Structural Analysis of a Passive Ankle-Foot Prosthesis with Manually Adjustable Stiffness and Having Two Degrees of Freedom</a><br>
+          <span style="font-size:11px;color:var(--accent);font-family:var(--mono);">Materials Today: Proceedings · ScienceDirect</span>
+        </td>
+        <td>2022</td>
+        <td><span class="paper-badge">Co-Author</span></td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>
+          <a href="https://pubs.aip.org/aip/acp/article/2962/1/020064/3253519/Development-of-seed-sowing-robot-using-shrimp" target="_blank">Development of Seed Sowing Robot Using Shrimp Mechanism</a><br>
+          <span style="font-size:11px;color:var(--accent);font-family:var(--mono);">AIP Conference Proceedings · AIP Publishing</span>
+        </td>
+        <td>2024</td>
+        <td><span class="paper-badge">Co-Author</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PATENT -->
+<section id="patent">
+  <div class="section-ref">REF-E &nbsp; Patent</div>
+  <div style="border:1px solid var(--line2);background:var(--bg2);">
+    <div style="padding:28px 32px;display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">Status</span>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:0.06em;">Pending</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:0.1em;text-transform:uppercase;">Filed via</span>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--text);">Silent Sensors Ltd</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:0.1em;text-transform:uppercase;">Domain</span>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--text);">Automotive · Sensing</span>
+      </div>
+      <div>
+        <h3 style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:12px;">Tyre Pressure &amp; Condition Monitoring System</h3>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;">Novel mechanical architecture for a battery-free tyre monitoring device. Covers sensor integration, structural housing design, and energy harvesting configuration for real-time tyre condition monitoring on commercial vehicles.</p>
+        <div style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);padding:8px 14px;border:1px solid var(--line2);letter-spacing:0.08em;">
+          ⚠ Full details confidential — NDA applies
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-ref">REF-F &nbsp; Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Mechanical Design</h4>
+      <div class="skill-items">
+        <span class="skill-item">Fusion 360 · SolidWorks · Creo</span>
+        <span class="skill-item">Mechanism design · Linkage synthesis</span>
+        <span class="skill-item">GD&T · Tolerance analysis</span>
+        <span class="skill-item">DFMA · DFM documentation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Simulation &amp; Analysis</h4>
+      <div class="skill-items">
+        <span class="skill-item">FEA — ANSYS, SolidWorks, Fusion</span>
+        <span class="skill-item">MATLAB / Simulink</span>
+        <span class="skill-item">Motion simulation</span>
+        <span class="skill-item">Structural · Thermal · Fatigue</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Fabrication</h4>
+      <div class="skill-items">
+        <span class="skill-item">FDM · SLS · Markforged / Onyx</span>
+        <span class="skill-item">Laser cutting · CNC machining</span>
+        <span class="skill-item">Sheet metal · Hand tools</span>
+        <span class="skill-item">Carbon-fibre reinforcement</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Robotics &amp; Actuation</h4>
+      <div class="skill-items">
+        <span class="skill-item">ROS / ROS 2</span>
+        <span class="skill-item">Servo systems · Geartrains</span>
+        <span class="skill-item">PID control</span>
+        <span class="skill-item">Electro-mechanical integration</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Programming</h4>
+      <div class="skill-items">
+        <span class="skill-item">Python · C/C++</span>
+        <span class="skill-item">MATLAB · Arduino</span>
+        <span class="skill-item">Git · OpenCV</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Electronics</h4>
+      <div class="skill-items">
+        <span class="skill-item">PCB design · Soldering</span>
+        <span class="skill-item">Sensor &amp; MCU integration</span>
+        <span class="skill-item">Power management</span>
+        <span class="skill-item">Oscilloscope signal validation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-ref">REF-G &nbsp; Education</div>
+  <div class="edu-list">
+    <div class="edu-item">
+      <div class="edu-year">Sept 2024 — Sept 2025</div>
+      <div class="edu-body">
+        <h3>MSc Robotics</h3>
+        <div class="edu-school">University of Bristol · Bristol, UK</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">July 2018 — July 2022</div>
+      <div class="edu-body">
+        <h3>BTech Mechanical Engineering</h3>
+        <div class="edu-school">Lovely Professional University · Punjab, India</div>
+        <p>Published research in prosthetics design and structural optimisation. Mater. Today Proc. 2022.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-ref">REF-H &nbsp; Get in Touch</div>
+  <div class="contact-wrap">
+    <div class="contact-text">
+      <h2>Open to engineering roles, collaborations, and interesting problems.</h2>
+      <p>Whether it's a full-time position, contract design work, or a research collaboration — feel free to reach out.</p>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a href="mailto:tenthinley3006@gmail.com" class="contact-link">
+          tenthinley3006@gmail.com
+          <span>Email ↗</span>
+        </a>
+        <a href="tel:+447741546785" class="contact-link">
+          +44 7741 546785
+          <span>Phone ↗</span>
+        </a>
+        <a href="https://linkedin.com/in/" class="contact-link" target="_blank">
+          LinkedIn
+          <span>Profile ↗</span>
+        </a>
+        <a href="https://github.com/" class="contact-link" target="_blank">
+          GitHub
+          <span>Repos ↗</span>
+        </a>
+        <a href="#" class="contact-link">
+          CV / Resume
+          <span>PDF ↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TITLE BLOCK -->
+<div class="title-block">
+  <div class="tb-cell">Title:<span class="hi">Tenzin Thinlay · Portfolio</span></div>
+  <div class="tb-cell">Role: Mechatronics Engineer</div>
+  <div class="tb-cell">Scale: 1:1</div>
+  <div class="tb-cell">Rev: 01</div>
+  <div class="tb-cell" id="tb-date">Date: —</div>
+  <div class="tb-cell" style="border-right:none;margin-left:auto;">Third Angle Projection</div>
+</div>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script>
+  document.getElementById('tb-date').textContent = 'Date: ' + new Date().toISOString().slice(0,10);
+
+  function toggleProject(id) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.project-item').forEach(p => p.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  function filterProjects(cat) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.project-item').forEach(el => {
+      const cats = el.dataset.category || '';
+      if (cat === 'all' || cats.includes(cat)) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+        el.classList.remove('open');
+      }
+    });
+  }
+  document.querySelectorAll('model-viewer').forEach(mv => {
+    const src = mv.getAttribute('src');
+    if (src && src !== '' && !src.startsWith('YOUR_STL')) {
+      const id = mv.id.replace('mv', 'viewer') + '-placeholder';
+      const placeholder = document.getElementById(id);
+      if (placeholder) placeholder.style.display = 'none';
+      mv.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
