@@ -576,16 +576,14 @@
 
   <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:12px;">
     <div style="display:flex; gap:2px;">
-      <button class="cat-btn active" onclick="filterProjects('all')">All</button>
-      <button class="cat-btn" onclick="filterProjects('design')">Mechanical Design</button>
-      <button class="cat-btn" onclick="filterProjects('embedded')">Embedded Systems</button>
-      <button class="cat-btn" onclick="filterProjects('robotics')">Robotics &amp; Programming</button>
+      <button class="cat-btn active" onclick="filterProjects('design')">Mechanical &amp; Embedded</button>
+      <button class="cat-btn" onclick="filterProjects('robotics')">Robotics &amp; Simulation</button>
     </div>
     <a href="https://github.com/tenzinthinlay" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;border:1px solid var(--line2);padding:8px 14px;letter-spacing:0.06em;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line2)'">github.com/tenzinthinlay ↗</a>
   </div>
 
     <!-- Project 1 -->
-    <div class="project-item" id="proj-1" data-category="robotics">
+    <div class="project-item" id="proj-1" data-category="design">
       <div class="project-header" onclick="toggleProject('proj-1')">
         <div class="project-num">01</div>
         <div class="project-title-wrap">
@@ -642,7 +640,7 @@
     </div>
 
     <!-- Project 2 -->
-    <div class="project-item" id="proj-2" data-category="robotics embedded">
+    <div class="project-item" id="proj-2" data-category="design">
       <div class="project-header" onclick="toggleProject('proj-2')">
         <div class="project-num">02</div>
         <div class="project-title-wrap">
@@ -743,7 +741,6 @@
               <li>Published — Mater. Today Proc. 2022</li>
             </ul>
             <div class="drawer-links">
-              <a href="https://www.sciencedirect.com/science/article/abs/pii/S2214785322040226" target="_blank" class="drawer-link primary">View Publication ↗</a>
               <a href="https://10zin-lay.github.io/ANkle_Prosthesis_.glb" class="drawer-link" download>↓ Download STL</a>
             </div>
           </div>
@@ -752,7 +749,7 @@
     </div>
 
     <!-- Project 4 -->
-    <div class="project-item" id="proj-4" data-category="design embedded">
+    <div class="project-item" id="proj-4" data-category="design">
       <div class="project-header" onclick="toggleProject('proj-4')">
         <div class="project-num">04</div>
         <div class="project-title-wrap">
@@ -823,85 +820,7 @@
       </div>
     </div>
 
-    <!-- Project 6 - GitHub -->
-    <div class="project-item" id="proj-6" data-category="robotics">
-      <div class="project-header" onclick="toggleProject('proj-6')">
-        <div class="project-num">06</div>
-        <div class="project-title-wrap">
-          <div class="project-meta">Personal · Robotics · GitHub</div>
-          <h3>ROS 2 Quadruped Motion Controller</h3>
-          <div class="tag-list">
-            <span class="tag">ROS 2</span>
-            <span class="tag">Python</span>
-            <span class="tag">PID Control</span>
-            <span class="tag">Gait Planning</span>
-          </div>
-        </div>
-        <div class="project-toggle">+</div>
-      </div>
-      <div class="project-drawer">
-        <div class="project-drawer-inner">
-          <div class="drawer-section">
-            <h4>Overview</h4>
-            <p>ROS 2 software stack for controlling the 3D printed quadruped. Implements gait planning, inverse kinematics per leg, and PID-based joint control. Written in Python with a modular node architecture for easy hardware swapping.</p>
-          </div>
-          <div class="drawer-section">
-            <h4>Key outcomes</h4>
-            <ul>
-              <li>Inverse kinematics solver for Watt six-bar legs</li>
-              <li>Trot and crawl gait implemented</li>
-              <li>ROS 2 node graph with teleop and autonomy modes</li>
-              <li>Tested on Raspberry Pi 4 with servo HAT</li>
-            </ul>
-            <div class="drawer-links">
-              <a href="https://github.com/tenzinthinlay/quadruped-ros2" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project 7 - GitHub -->
-    <div class="project-item" id="proj-7" data-category="embedded robotics">
-      <div class="project-header" onclick="toggleProject('proj-7')">
-        <div class="project-num">07</div>
-        <div class="project-title-wrap">
-          <div class="project-meta">Personal · Embedded Systems · GitHub</div>
-          <h3>Arduino Gripper Force Controller</h3>
-          <div class="tag-list">
-            <span class="tag">Arduino</span>
-            <span class="tag">C/C++</span>
-            <span class="tag">Servo Control</span>
-            <span class="tag">Force Sensing</span>
-          </div>
-        </div>
-        <div class="project-toggle">+</div>
-      </div>
-      <div class="project-drawer">
-        <div class="project-drawer-inner">
-          <div class="drawer-section">
-            <h4>Overview</h4>
-            <p>Embedded firmware for the servo-actuated gripper. Reads a force-sensitive resistor and closes a PID loop to maintain target grip force. Serial interface for tuning gains and logging data in real time. Fully open-source on GitHub.</p>
-          </div>
-          <div class="drawer-section">
-            <h4>Key outcomes</h4>
-            <ul>
-              <li>FSR-based closed-loop grip force control</li>
-              <li>PID tuning via serial terminal</li>
-              <li>Real-time data logging at 100 Hz</li>
-              <li>Under 4 KB flash footprint on Arduino Nano</li>
-            </ul>
-            <div class="drawer-links">
-              <a href="https://github.com/tenzinthinlay/gripper-controller" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
-
-
 
 </section>
 <section id="papers">
@@ -1105,7 +1024,7 @@
     event.target.classList.add('active');
     document.querySelectorAll('.project-item').forEach(el => {
       const cats = el.dataset.category || '';
-      if (cat === 'all' || cats.includes(cat)) {
+      if (cats.includes(cat)) {
         el.classList.remove('hidden');
       } else {
         el.classList.add('hidden');
@@ -1113,6 +1032,14 @@
       }
     });
   }
+  // Show Mechanical & Embedded by default on load
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.project-item').forEach(el => {
+      if (!(el.dataset.category || '').includes('design')) {
+        el.classList.add('hidden');
+      }
+    });
+  });
   document.querySelectorAll('model-viewer').forEach(mv => {
     const src = mv.getAttribute('src');
     if (src && src !== '' && !src.startsWith('YOUR_STL')) {
