@@ -579,7 +579,6 @@
       <button class="cat-btn active" onclick="filterProjects('design')">Mechanical &amp; Embedded</button>
       <button class="cat-btn" onclick="filterProjects('robotics')">Robotics &amp; Simulation</button>
     </div>
-    <a href="https://github.com/tenzinthinlay" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;border:1px solid var(--line2);padding:8px 14px;letter-spacing:0.06em;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line2)'">github.com/tenzinthinlay ↗</a>
   </div>
 
     <!-- Project 1 -->
@@ -587,7 +586,7 @@
       <div class="project-header" onclick="toggleProject('proj-1')">
         <div class="project-num">01</div>
         <div class="project-title-wrap">
-          <div class="project-meta">Ongoing · Robotics</div>
+          
           <h3>3D Printed Quadruped Robot</h3>
           <div class="tag-list">
             <span class="tag">Linkage Design</span>
@@ -641,7 +640,7 @@
       <div class="project-header" onclick="toggleProject('proj-2')">
         <div class="project-num">02</div>
         <div class="project-title-wrap">
-          <div class="project-meta">University Project · Robotics</div>
+          
           <h3>Servo-Actuated Robotic Gripper</h3>
           <div class="tag-list">
             <span class="tag">Slider-Crank</span>
@@ -693,7 +692,7 @@
       <div class="project-header" onclick="toggleProject('proj-3')">
         <div class="project-num">03</div>
         <div class="project-title-wrap">
-          <div class="project-meta">Research Project · 2022 · Published</div>
+          
           <h3>Passive Ankle-Foot Prosthesis with Adjustable Stiffness</h3>
           <div class="tag-list">
             <span class="tag">FEA · ANSYS</span>
@@ -742,84 +741,11 @@
       </div>
     </div>
 
-    <!-- Project 4 -->
-    <div class="project-item" id="proj-4" data-category="design">
-      <div class="project-header" onclick="toggleProject('proj-4')">
-        <div class="project-num">04</div>
-        <div class="project-title-wrap">
-          <div class="project-meta">Industry · Silent Sensors Ltd · 2025</div>
-          <h3>TPMS — Battery-Free Tyre Monitoring System</h3>
-          <div class="tag-list">
-            <span class="tag">Markforged / Onyx</span>
-            <span class="tag">Carbon Fibre</span>
-            <span class="tag">Electro-Mechanical</span>
-            <span class="tag">Test Fixtures</span>
-          </div>
-        </div>
-        <div class="project-toggle">+</div>
-      </div>
-      <div class="project-drawer">
-        <div class="project-drawer-inner">
-          <div class="drawer-section">
-            <h4>Overview</h4>
-            <p>Led end-to-end mechanical design of a battery-free tyre pressure monitoring system from concept to prototype at Silent Sensors Ltd. Explored Markforged Onyx and carbon-fibre reinforced materials. Designed custom vibration and stress test fixtures, with oscilloscope-based signal validation. Maintained full BOM and documentation through to first production batch.</p>
-          </div>
-          <div class="drawer-section">
-            <h4>Key outcomes</h4>
-            <ul>
-              <li>Full concept-to-prototype pipeline delivered</li>
-              <li>Markforged Onyx and carbon-fibre materials evaluated</li>
-              <li>Custom jig-based vibration and durability test fixtures</li>
-              <li>Cross-functional collaboration with electronics and firmware teams</li>
-              <li>BOM and documentation maintained through to production batch</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project 5 -->
-    <div class="project-item" id="proj-5" data-category="design">
-      <div class="project-header" onclick="toggleProject('proj-5')">
-        <div class="project-num">05</div>
-        <div class="project-title-wrap">
-          <div class="project-meta">Industry · Planys Technologies · 2022–2023</div>
-          <h3>ROV/AUV Mechanical Redesign</h3>
-          <div class="tag-list">
-            <span class="tag">GD&T</span>
-            <span class="tag">Sheet Metal</span>
-            <span class="tag">IP Rating</span>
-            <span class="tag">DFM</span>
-            <span class="tag">SolidWorks</span>
-          </div>
-        </div>
-        <div class="project-toggle">+</div>
-      </div>
-      <div class="project-drawer">
-        <div class="project-drawer-inner">
-          <div class="drawer-section">
-            <h4>Overview</h4>
-            <p>Led PDIC redesign for underwater robotic systems (ROV/AUV platforms) operating in harsh subsea environments. Designed sheet metal enclosures and laser-cut sensor mounts. All designs validated through IP rating tests, FEA, and physical prototype testing. Delivered fabrication-ready GD&T drawings with DFM documentation.</p>
-          </div>
-          <div class="drawer-section">
-            <h4>Key outcomes</h4>
-            <ul>
-              <li>30% weight reduction achieved on redesigned assemblies</li>
-              <li>IP rating validation through physical testing</li>
-              <li>Fabrication-ready GD&T drawings and DFM documentation</li>
-              <li>Sheet metal enclosures and laser-cut mounts for ROV/AUV platforms</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Project 6 -->
     <div class="project-item" id="proj-6" data-category="design">
       <div class="project-header" onclick="toggleProject('proj-6')">
         <div class="project-num">06</div>
         <div class="project-title-wrap">
-          <div class="project-meta">Personal · Sept 2022 · Mechanical & Embedded</div>
           <h3>Morphing Quadrotor</h3>
           <div class="tag-list">
             <span class="tag">Fusion 360</span>
@@ -833,6 +759,13 @@
       </div>
       <div class="project-drawer">
         <div class="project-drawer-inner">
+          <div class="stl-viewer-wrap">
+            <div class="stl-viewer-label">3D Model — Morphing Quadrotor <span>orbit · zoom · pan</span></div>
+            <model-viewer src="https://10zin-lay.github.io/MrophesDrone.glb" alt="Morphing Quadrotor 3D model"
+              camera-controls shadow-intensity="0.8" exposure="0.4" environment-image="neutral"
+              style="width:100%; height:340px; background:#0d0d0b; --poster-color:#0d0d0b;">
+            </model-viewer>
+          </div>
           <div class="drawer-section">
             <h4>Overview</h4>
             <p>Developed a high-fidelity CAD model for a morphing-arm quadrotor in Fusion 360. Integrated Pixhawk flight controller, ESCs, BLDC motors, and SG90 servo motors to enable arm actuation. Custom propellers designed using airfoil .DAT files and spline fitting scripts for aerodynamic efficiency, with emphasis on mechanism integration and weight optimisation for flight stability.</p>
@@ -855,7 +788,6 @@
       <div class="project-header" onclick="toggleProject('proj-7')">
         <div class="project-num">07</div>
         <div class="project-title-wrap">
-          <div class="project-meta">Personal · Aug 2021 – Aug 2022 · Mechanical & Embedded</div>
           <h3>Seed Sowing Mobile Robot</h3>
           <div class="tag-list">
             <span class="tag">Shrimp Mechanism</span>
@@ -891,7 +823,7 @@
       <div class="project-header" onclick="toggleProject('proj-8')">
         <div class="project-num">08</div>
         <div class="project-title-wrap">
-          <div class="project-meta">Personal · Jul – Nov 2021 · Mechanical Design</div>
+          
           <h3>Reverse Engineering — Exhaust Fan Motor</h3>
           <div class="tag-list">
             <span class="tag">Reverse Engineering</span>
@@ -905,6 +837,13 @@
       </div>
       <div class="project-drawer">
         <div class="project-drawer-inner">
+          <div class="stl-viewer-wrap">
+            <div class="stl-viewer-label">3D Model — Exhaust Fan Motor <span>orbit · zoom · pan</span></div>
+            <model-viewer src="https://10zin-lay.github.io/ReverseEngineering.glb" alt="Exhaust Fan Motor 3D model"
+              camera-controls shadow-intensity="0.8" exposure="0.4" environment-image="neutral"
+              style="width:100%; height:340px; background:#0d0d0b; --poster-color:#0d0d0b;">
+            </model-viewer>
+          </div>
           <div class="drawer-section">
             <h4>Overview</h4>
             <p>Executed a full reverse engineering cycle on an exhaust fan motor: disassembly, measurement, sketching, CAD modelling, FEA simulation, and manufacturing documentation. Created tolerance-based technical drawings and identified suitable manufacturing processes including CNC machining. Focused on component replication, fit analysis, and design for assembly.</p>
@@ -927,7 +866,6 @@
       <div class="project-header" onclick="toggleProject('proj-10')">
         <div class="project-num">10</div>
         <div class="project-title-wrap">
-          <div class="project-meta">MSc · Oct 2024 – Jan 2025 · Robotics & Simulation</div>
           <h3>Robotic Manipulator Kinematics & Motion Planning</h3>
           <div class="tag-list">
             <span class="tag">MATLAB</span>
@@ -954,6 +892,9 @@
               <li>3-RRR planar parallel robot IK via trigonometric decomposition</li>
               <li>Orientation-dependent workspace maps generated</li>
             </ul>
+            <div class="drawer-links">
+              <a href="https://github.com/10zin-lay" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -964,7 +905,6 @@
       <div class="project-header" onclick="toggleProject('proj-11')">
         <div class="project-num">11</div>
         <div class="project-title-wrap">
-          <div class="project-meta">MSc · Oct 2024 – Jan 2025 · Robotics & Simulation</div>
           <h3>Adaptive Point-Tracking Control — Cooperative Multi-Robot Box Pushing</h3>
           <div class="tag-list">
             <span class="tag">APTC</span>
@@ -990,6 +930,9 @@
               <li>Implemented on Pololu 3pi+ with odometry-based control</li>
               <li>Cooperative multi-robot trajectory precision achieved</li>
             </ul>
+            <div class="drawer-links">
+              <a href="https://github.com/10zin-lay" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1000,7 +943,6 @@
       <div class="project-header" onclick="toggleProject('proj-12')">
         <div class="project-num">12</div>
         <div class="project-title-wrap">
-          <div class="project-meta">MSc · Oct 2024 – Jan 2025 · Robotics & Simulation</div>
           <h3>Autonomous Search & Rescue Robot</h3>
           <div class="tag-list">
             <span class="tag">Pololu 3pi+</span>
@@ -1026,6 +968,9 @@
               <li>Shortest-path return using stored positional states</li>
               <li>High repeatability with low heading drift</li>
             </ul>
+            <div class="drawer-links">
+              <a href="https://github.com/10zin-lay" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1036,7 +981,7 @@
       <div class="project-header" onclick="toggleProject('proj-13')">
         <div class="project-num">13</div>
         <div class="project-title-wrap">
-          <div class="project-meta">MSc · Oct 2024 – Jan 2025 · Machine Vision</div>
+          
           <h3>Apple Detection & Counting — Machine Vision & Deep Learning</h3>
           <div class="tag-list">
             <span class="tag">YOLOv8</span>
@@ -1063,6 +1008,48 @@
               <li>GPU training on V100/T4 with COCO annotation pipeline</li>
               <li>Conventional CV pipeline benchmarked against ML models</li>
             </ul>
+            <div class="drawer-links">
+              <a href="https://github.com/10zin-lay" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 14 -->
+    <div class="project-item hidden" id="proj-14" data-category="robotics">
+      <div class="project-header" onclick="toggleProject('proj-14')">
+        <div class="project-num">14</div>
+        <div class="project-title-wrap">
+          <h3>Autonomous Waste-Sorting Robot Arm · Oxford Hardware Hackathon</h3>
+          <div class="tag-list">
+            <span class="tag">Inverse Kinematics</span>
+            <span class="tag">Quanser QArm</span>
+            <span class="tag">Roboflow</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="drawer-section">
+            <h4>Overview</h4>
+            <p>Built an autonomous trash-sorting robot arm at the Oxford Hardware Hackathon, hosted by Oxford Artificial Intelligence Society. Wired up a Quanser QArm Mini to watch, think, and act autonomously — sorting waste into paper, plastic, and metal streams under a 16-hour build clock. Live camera detections from a Roboflow-hosted model were converted into real joint angles executed via the Quanser SDK. Focus area was kinematics and inverse kinematics, tying camera-to-robot calibration together end-to-end.</p>
+          </div>
+          <div class="drawer-section">
+            <h4>Key outcomes</h4>
+            <ul>
+              <li>Autonomous waste sorting into paper, plastic, and metal streams</li>
+              <li>Roboflow object detection → real-time joint angle conversion</li>
+              <li>Camera-to-robot calibration implemented under 16-hour time constraint</li>
+              <li>Quanser SDK integration for live arm control</li>
+              <li>Sponsored by Quanser, Foundry Robotics, Atech, and Neuracore</li>
+            </ul>
+            <div class="drawer-links">
+              <a href="https://github.com/CarlLindersson/Physical_AI_Hackathon" target="_blank" class="drawer-link primary">View on GitHub ↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1279,13 +1266,22 @@
         el.classList.remove('open');
       }
     });
+    // Renumber visible projects from 01
+    let n = 1;
+    document.querySelectorAll('.project-item:not(.hidden) .project-num').forEach(el => {
+      el.textContent = String(n++).padStart(2, '0');
+    });
   }
-  // Show Mechanical & Embedded by default on load
+  // Renumber on load
   window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.project-item').forEach(el => {
       if (!(el.dataset.category || '').includes('design')) {
         el.classList.add('hidden');
       }
+    });
+    let n = 1;
+    document.querySelectorAll('.project-item:not(.hidden) .project-num').forEach(el => {
+      el.textContent = String(n++).padStart(2, '0');
     });
   });
   document.querySelectorAll('model-viewer').forEach(mv => {
