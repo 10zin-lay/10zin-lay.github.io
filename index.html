@@ -213,7 +213,7 @@
     <span>R&D Mechanical Engineer</span> · Silent Sensors Ltd &nbsp;·&nbsp; MSc Robotics, <span>University of Bristol</span>
   </div>
   <div class="hero-stats">
-    <div class="hero-stat"><span class="hero-stat-num">13+</span><span class="hero-stat-label">Design Projects</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">14+</span><span class="hero-stat-label">Design Projects</span></div>
     <div class="hero-stat"><span class="hero-stat-num">2</span><span class="hero-stat-label">Publications</span></div>
     <div class="hero-stat"><span class="hero-stat-num">1</span><span class="hero-stat-label">Patent Pending</span></div>
     <div class="hero-stat"><span class="hero-stat-num">2</span><span class="hero-stat-label">Industry Roles</span></div>
@@ -424,6 +424,28 @@
       <div class="project-header" onclick="toggleProject('proj-9')">
         <div class="project-num">09</div>
         <div class="project-title-wrap">
+          <h3>Suction Gripper for UR10e Cobot</h3>
+          <div class="tag-list"><span class="tag">Fusion 360</span><span class="tag">Pneumatics</span><span class="tag">Spring Design</span><span class="tag">3D Printing</span><span class="tag">Vendor CAD Integration</span></div>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-drawer">
+        <div class="project-drawer-inner">
+          <div class="stl-viewer-wrap">
+            <div class="stl-viewer-label">3D Model — Suction Gripper <span>orbit · zoom · pan</span></div>
+            <div class="stl-placeholder" id="viewer-9-placeholder" style="display:none;"><div class="stl-icon-big">⏣</div></div>
+            <model-viewer id="mv-9" src="https://10zin-lay.github.io/Gripper_Assembly.glb" alt="UR10e suction gripper 3D model" camera-controls shadow-intensity="0.8" exposure="0.4" environment-image="neutral" camera-orbit="-45deg 70deg 2m" style="width:100%; height:340px; background:#0d0d0b; --poster-color:#0d0d0b;"></model-viewer>
+          </div>
+          <div class="drawer-section"><h4>Overview</h4><p>Designed a single suction cup end effector with an integrated spring-loaded level compensator for a collaborative robot tasked with handling foil bags, as part of a mechanical engineering hardware design challenge. Selected and verified a UR10e robot, Schunk SWS-020 tool changer, Schmalz SMPi compact ejector, and Schmalz SPB4f bellows suction cup against the customer's 1200 mm reach, 10 kg payload, and 6 bar compressed air requirements. Designed the custom gripper as a four-part assembly — an aluminium top mount, a 3D printed protective cover, a spring-loaded piston, and an aluminium bottom mount — clamped together by through-bolts and integrated into a single STEP assembly with the robot and tool changer.</p></div>
+          <div class="drawer-section"><h4>Key outcomes</h4><ul><li>Verified mechanical and pneumatic interfaces (ISO 9409, BSPP threads, bolt patterns) directly against manufacturer drawings before modelling</li><li>Sized a custom compression spring from first principles (spring rate, coil count, stroke) for the level compensator</li><li>Hybrid material strategy: aluminium for load-bearing/threaded interfaces, 3D printed cover for the non-structural enclosure</li><li>Full pneumatic routing designed from 6 bar supply through ejector to vacuum cup, with fitting and thread sizes selected to avoid flow restriction</li><li>Delivered a single-file STEP assembly and a written design composition with CAD screenshots and engineering justification</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item" id="proj-10" data-category="design">
+      <div class="project-header" onclick="toggleProject('proj-10')">
+        <div class="project-num">10</div>
+        <div class="project-title-wrap">
           <h3>PENNY — Tyre Management System</h3>
           <div class="tag-list"><span class="tag">Energy Harvesting</span><span class="tag">Markforged / Onyx</span><span class="tag">Electro-Mechanical</span><span class="tag">Carbon Fibre</span><span class="tag">Test Fixtures</span></div>
         </div>
@@ -437,9 +459,9 @@
       </div>
     </div>
 
-    <div class="project-item hidden" id="proj-10" data-category="robotics">
-      <div class="project-header" onclick="toggleProject('proj-10')">
-        <div class="project-num">10</div>
+    <div class="project-item hidden" id="proj-11" data-category="robotics">
+      <div class="project-header" onclick="toggleProject('proj-11')">
+        <div class="project-num">11</div>
         <div class="project-title-wrap">
           <h3>Robotic Manipulator Kinematics &amp; Motion Planning</h3>
           <div class="tag-list"><span class="tag">MATLAB</span><span class="tag">DH Convention</span><span class="tag">Inverse Kinematics</span><span class="tag">Trajectory Planning</span><span class="tag">5-DOF</span></div>
@@ -456,9 +478,9 @@
       </div>
     </div>
 
-    <div class="project-item hidden" id="proj-11" data-category="robotics">
-      <div class="project-header" onclick="toggleProject('proj-11')">
-        <div class="project-num">11</div>
+    <div class="project-item hidden" id="proj-12" data-category="robotics">
+      <div class="project-header" onclick="toggleProject('proj-12')">
+        <div class="project-num">12</div>
         <div class="project-title-wrap">
           <h3>Adaptive Point-Tracking Control — Cooperative Multi-Robot Box Pushing</h3>
           <div class="tag-list"><span class="tag">APTC</span><span class="tag">Lyapunov Control</span><span class="tag">PID</span><span class="tag">Pololu 3pi+</span><span class="tag">Odometry</span></div>
@@ -475,9 +497,9 @@
       </div>
     </div>
 
-    <div class="project-item hidden" id="proj-12" data-category="robotics">
-      <div class="project-header" onclick="toggleProject('proj-12')">
-        <div class="project-num">12</div>
+    <div class="project-item hidden" id="proj-13" data-category="robotics">
+      <div class="project-header" onclick="toggleProject('proj-13')">
+        <div class="project-num">13</div>
         <div class="project-title-wrap">
           <h3>Autonomous Search &amp; Rescue Robot</h3>
           <div class="tag-list"><span class="tag">Pololu 3pi+</span><span class="tag">Path Planning</span><span class="tag">Lawn-Mower Algorithm</span><span class="tag">Odometry</span><span class="tag">Embedded C</span></div>
@@ -494,9 +516,9 @@
       </div>
     </div>
 
-    <div class="project-item hidden" id="proj-13" data-category="robotics">
-      <div class="project-header" onclick="toggleProject('proj-13')">
-        <div class="project-num">13</div>
+    <div class="project-item hidden" id="proj-14" data-category="robotics">
+      <div class="project-header" onclick="toggleProject('proj-14')">
+        <div class="project-num">14</div>
         <div class="project-title-wrap">
           <h3>Apple Detection &amp; Counting — Machine Vision &amp; Deep Learning</h3>
           <div class="tag-list"><span class="tag">YOLOv8</span><span class="tag">Faster R-CNN</span><span class="tag">Custom CNN</span><span class="tag">OpenCV</span><span class="tag">Python</span></div>
@@ -513,9 +535,9 @@
       </div>
     </div>
 
-    <div class="project-item hidden" id="proj-14" data-category="robotics">
-      <div class="project-header" onclick="toggleProject('proj-14')">
-        <div class="project-num">14</div>
+    <div class="project-item hidden" id="proj-15" data-category="robotics">
+      <div class="project-header" onclick="toggleProject('proj-15')">
+        <div class="project-num">15</div>
         <div class="project-title-wrap">
           <h3>Autonomous Waste-Sorting Robot Arm · Oxford Hardware Hackathon</h3>
           <div class="tag-list"><span class="tag">Inverse Kinematics</span><span class="tag">Quanser QArm</span><span class="tag">Roboflow</span><span class="tag">Computer Vision</span><span class="tag">Python</span></div>
